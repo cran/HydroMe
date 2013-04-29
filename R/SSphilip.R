@@ -1,4 +1,4 @@
-"SSphilip" <-
+SSphilip <-
 structure(function (input, fc, S) 
 {
     .expr2 <- input^-0.5

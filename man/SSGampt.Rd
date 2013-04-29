@@ -1,39 +1,47 @@
-\name{SSGampt}
-\alias{SSGampt}
-\title{A selfstarting function for estimating 
-infiltration parameters in the Green-Ampt model}
+\name{SSgampt}
+\alias{SSgampt}
+\title{
+A Green-Ampt water infiltration model
+}
 \description{
-  This selfstarting function estimates ks and (A) during infiltration.
- It has an initial attribute that creates initial estimates of the parameters ks and A  }
+This is a two- parameter function to determine water infiltration parameters contained in the Green-Ampt infiltration model
+}
 \usage{
-SSGampt(input, ks, A)
+SSgampt(input, ks, A)
 }
 \arguments{
-  \item{input}{a numeric vector of values at which to 
-evaluate the model. It should contain the cummulative infiltration capacities  }
-  \item{ks}{ a numeric parameter representing the 
-asymptote to the cummulative-infiltration axis (when input values are very large)  }
-  \item{A}{a numeric parameter representing the integral 
-measure of the potential of wetting front in increasing soil moisture during infiltration  }
+  \item{input}{
+Instantaneous infiltration rate 
 }
-\value{a numeric vector of the same length as input. It is the value of the
- expression 
- \eqn{ ks+(A/input) }. 
-It represents 
-the fitted estimates of infiltration rates  }
-\references{Green, W.A., Ampt, G.A., 1911
- \emph{ Studies on soil physics: 1. the flow of air and water through soils}
- \bold{ Journal of Agricultural Science 4, 1-24  } 
+  \item{ks}{
+Saturated hydraulic conductivity
 }
-\author{Omuto, Christian Thine }
-\note{ It may be necessary to transform the instantaneous 
-infiltration rates to avoid the function returning negative ks values }
-\seealso{ SShort, SSphilip  }
-\examples{
-##---- Use infiltration data---- 
-data(infiltration) 
-Gampt.nls <-nls(log(Rate)~SSGampt(Cumrate, ks, A), data=infiltration) 
-summary(Gampt.nls)# Call summary to desplay the results 
+  \item{A}{
+Constant incorporating matric suction potential, wetting front, and antecedent moisture content 
+}
+}
+\details{
+This is a self-starting model for estimating Green-Ampt infiltration model using instantaneous and cumulative infiltration data 
+}
+\value{
+A list of objects returned by standard R regression functions such as nls and lm
+}
+\references{
+Green WA and Ampt GA. 1911. Studies on soil physics: 1. The flow of air and water through soils. Journal of Agricultural Science 4: 1-24
+}
+\author{
+Christian Thine Omuto
+}
 
+\seealso{
+SSphilip, SShorton
 }
-\keyword{ models}
+\examples{
+##Load the data
+data(infilt)
+gamp.ns=nlsLM(Cumrate~SSgampt(Rate,ks,A), infilt)
+summary(gamp.ns)
+}
+\keyword{ models }
+
+\keyword{ manip }

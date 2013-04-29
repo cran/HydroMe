@@ -1,4 +1,4 @@
-"SSMgg" <-
+SSomuto <-
 structure(function (input, Ths1, alp1, Ths2, alp2) 
 {
     .expr1 <- exp(alp1)
@@ -6,10 +6,11 @@ structure(function (input, Ths1, alp1, Ths2, alp2)
     .expr7 <- exp(alp2)
     .expr10 <- exp(((-.expr7) * input))
     .value <- (Ths1 * .expr4) + (Ths2 * .expr10)
-    .actualArgs <- as.list(match.call()[c("Ths1", "alp1", 
-        "Ths2", "alp2")])
+    .actualArgs <- as.list(match.call()[c("Ths1", "alp1", "Ths2", 
+        "alp2")])
     if (all(unlist(lapply(.actualArgs, is.name)))) {
-        .grad <- array(0, c(length(.value), 4), list(NULL, c("Ths1", "alp1", "Ths2", "alp2")))
+        .grad <- array(0, c(length(.value), 4), list(NULL, c("Ths1", 
+            "alp1", "Ths2", "alp2")))
         .grad[, "Ths1"] <- .expr4
         .grad[, "alp1"] <- -(Ths1 * (.expr4 * (.expr1 * input)))
         .grad[, "Ths2"] <- .expr10

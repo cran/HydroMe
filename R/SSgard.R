@@ -1,4 +1,4 @@
-"SSgard" <-
+SSgard <-
 structure(function (input, Thr, Ths, alp, scal) 
 {
     .expr1 <- Ths - Thr

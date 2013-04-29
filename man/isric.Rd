@@ -1,27 +1,35 @@
 \name{isric}
 \alias{isric}
 \docType{data}
-\title{Water retention characteristics of the ISRIC world databse}
-\description{Part of the water retention data from several countries in the world 
-as contained in the ISRIC world soil database. It contains names of the countries and sampling points as well
+\title{
+Water retention world dataset from ISRIC
+}
+\description{
+This is part of world dataset of measured water retention characteristics. It contains soil moisture contents (y) at eight (8) levels of suction pressure heads (x).  
 }
 \usage{data(isric)}
 \format{
   A data frame with 320 observations on the following 6 variables.
   \describe{
-    \item{\code{Sample}}{a factor with levels with codes for samples  } 
-    \item{\code{Country}}{a factor with levels with codefor countries  }
-    \item{\code{BD}}{a numeric vector of subsoil bulk densities  }
-    \item{\code{x}}{a numeric vector of suction potential in cm  }
-    \item{\code{lnx}}{a numeric vector of logarithm of suction potential  }
-    \item{\code{y}}{a numeric vector of moisture content in vol/vol  }
+    \item{\code{Sample}}{which is a factor with levels such as: \code{Benin1} \code{Benin2} \code{Benin3} \code{Italy4} \code{Italy5} \code{Italy6} \code{Italy7} \code{Nicaragua21} \code{Nicaragua22} \code{Nicaragua23} \code{Nicaragua24} \code{Nicaragua25} \code{Nicaragua26} \code{Nicaragua27} \code{Nicaragua28} \code{Nicaragua29} \code{Nicaragua30} \code{Nicaragua31} \code{Nicaragua32} \code{Nicaragua33} \code{Nicaragua34} \code{Nicaragua35} \code{Nicaragua36} \code{Nicaragua37} \code{Nicaragua38} \code{Nicaragua39} \code{Nicaragua40} \code{Poland10} \code{Poland11} \code{Poland8} \code{Poland9} \code{Rwanda16} \code{Rwanda17} \code{Rwanda18} \code{Rwanda19} \code{Rwanda20} \code{Togo12} \code{Togo13} \code{Togo14} \code{Togo15}}
+    \item{\code{Country}}{which is a factor with levels such as: \code{Benin} \code{Italy} \code{Nicaragua} \code{Poland} \code{Rwanda} \code{Togo}}
+    \item{\code{BD}}{which is a numeric vector for bulk density}
+    \item{\code{x}}{which is a numeric vector for suction potential}
+    \item{\code{lnx}}{which is a numeric vector for log(e)}
+    \item{\code{y}}{which is a numeric vector of moisture contents}
   }
 }
-\details{The data for each point contain at least five entries for water retention
- charcateristics including zero and 15000 cm suction potentials  }
-\source{www.isric.nl  }
+\details{
+The data is grouped according to samples from each country from where the data were collected. In addition, it also contains surface bulk density (BD) for each sample. The whole dataset can be obtained from www.isric.nl
+}
+\source{
+www.isric.nl
+}
+\references{
+www.isric.nl
+}
 \examples{
 data(isric)
-## maybe summary(isric) ; plot(isric)
+str(isric) 
 }
 \keyword{datasets}

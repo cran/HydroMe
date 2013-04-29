@@ -1,4 +1,4 @@
-"SSGampt" <-
+SSgampt <-
 structure(function (input, ks, A) 
 {
     .value <- ks + (A/input)

@@ -1,36 +1,45 @@
 \name{SSphilip}
 \alias{SSphilip}
-\title{A selfstarting function for estimating
- infiltration parameters in the Philips model  }
-\description{This selfstarting function estimates the 
-infiltration parameters contained in the Philips model. It has an initial attribute 
-that creates initial estimates of the parameters fc, and S  }
+\title{
+A Philip's water infiltration model
+}
+\description{
+This is a two- parameter function to determine water infiltration parameters contained in the Philip's infiltration model
+}
 \usage{
 SSphilip(input, fc, S)
 }
 \arguments{
-  \item{input}{ A numeric vector of Time  }
-  \item{fc}{ A numeric parameter representing the final steady infiltration capacity  }
-  \item{S}{ a numeric parameter representing the slope of the infiltration 
-characteristic curve at the early tmies of the infiltration process. It is the estimate of sorptivity at the supply moisture content  }
+  \item{input}{
+Time
+}
+  \item{fc}{
+Steady infiltration rate
+}
+  \item{S}{
+Sorptivity
+}
+}
+\details{
+This is a self-starting model for estimating Philip's infiltration model using instantaneous infiltration rates (here known as Rate) and time (Time) data
 }
 \value{
-  a numeric vector of the same length as input. It is the value of the 
-expression 
- \eqn{ fc+(0.5*S)/sqrt(input) }. 
- It represents the fitted values by the Philips model }
-\references{Philip, J.R., 1957
- \emph{ The theory of infiltration 4: Sorptivity and algebraic
- infiltration equations }
- \bold{ Soil Science 84, 257-264  }
+A list of objects returned by standard R regression functions such as nls and lm
 }
-\author{ Omuto, Christian Thine}
-\seealso{SShort, SSGampt}
+\references{
+Philip JR. 1957. The theory of infiltration.: 4 Sorptivity and algebraic infiltration equations. Soil Science 84: 257-264
+}
+\author{
+Christian Thine Omuto
+}
+\seealso{
+SShorton, SSgampt
+}
 \examples{
-##-- Use infiltration data 
-data(infiltration)
- philip.nls <-nls(Rate~SSphilip(Time, fc, S), data=infiltration) 
-plot(fitted(philip.nls)~infiltration$Rate) # Plot the fitted versus measured
-
+data(infilt)
+philip.nis=nlsList(log(Rate)~SSphilip(Time,fc,S)|PlotNo, data=infilt)
+coef(philip.nis)
 }
-\keyword{ models}
+
+\keyword{ models }
+\keyword{manip}

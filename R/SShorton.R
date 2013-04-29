@@ -1,4 +1,4 @@
-"SShort" <-
+SShorton <-
 structure(function (input, fc, f0, lrk) 
 {
     .expr1 <- f0 - fc

@@ -1,40 +1,35 @@
-\name{Infilt}
-\alias{Infilt}
+\name{infilt}
+\alias{infilt}
 \docType{data}
-\title{Infiltration test data from the Upper Athi River basin, Eastern Kenya }
-\description{
-  
-  This data contains infiltration capacities(in cm/min), Time (min), 
-and land use-land cover types in the Upper Athi river basin in Eastern Kenya. 
-The infiltration tests were carried out using standard infiltrometers and 
-the data sampled over many plots in the whole basin.
+\title{
+Water infiltration characteristics data
 }
-\usage{data(Infilt)}
+\description{
+This is part of a dataset from a PhD study  which measured water infiltration characteristics from the Upper Athi River basin in Eastern Kenya. It contains rate of infiltration (y) at different levels of cummulative Time intervals (x) 
+}
+\usage{data(infilt)}
 \format{
-  A data frame with 1105 observations on the following 5 variables.
+   A data frame with 1105 observations on the following 6 variables.
   \describe{
-    \item{\code{Sample}}{a numeric vector of raws in the data  }
-    \item{\code{PlotNo}}{an ordered factor of plocodes  }
-    \item{\code{Erosion}}{a factor with levels \code{E0} \code{E1} \code{E2}  }
-    \item{\code{Time}}{a numeric vector of the time of infiltration tests in minutes  }
-    \item{\code{Rate}}{a numeric vector of infiltration capacities in cm/min  }
+    \item{\code{Sample}}{ which is a numeric vector}
+    \item{\code{PlotNo}}{which is a factor with levels such as: \code{10lP3} \code{11lP3} \code{12lP3} \code{13lP3} \code{14lP3} \code{15lP3} \code{16lP3} \code{17lP3} \code{18lP3} \code{19lP3} \code{1lP3} \code{20lP3} \code{21lP3} \code{22lP3} \code{23lP3} \code{24lP3} \code{25lP3} \code{26lP3} \code{27lP3} \code{28lP3} \code{29lP3} \code{2lP3} \code{30lP3} \code{3lP3} \code{4lP3} \code{5lP3} \code{6lP3} \code{7lP3} \code{8lP3} \code{9lP3}}
+    \item{\code{Erosion}}{which is a factor with levels such as: \code{E0} \code{E1} \code{E2}}
+    \item{\code{Time}}{which is a numeric vector of cumulative infiltration time}
+    \item{\code{Rate}}{which is a numeric vector of instantaneous infiltration rate}
+    \item{\code{Cumrate}}{which is a numeric vector of cumulative infiltration rate}
   }
 }
+\details{
+The data is grouped according to plots (given the name PlotNo) from where the data were collected
+}
 \source{
-  Omuto, C.T. 2006
-    \emph{ Large-Area Soil Physical Degradation Assessment: The Use of GIS, Remote Sensing,and Infrared 
-Spectroscopy in Arid and Semi-Arid Kenya}
-    \bold{ PhD dissertation}
-     Nairobi: University of Nairobi
+Omuto CT. 2006. Large-area soil physical degradation assessment using gis, remote sensing, and infrared spectroscopy in arid and semi-arid Kenya. PhD Dissertation, University of Nairobi, Kenya 
 }
 \references{
- Omuto, C.T., Minasny, B., McBratney, A.B., Biamah, E.K., 2006
-    \emph{ Nonlinear mixed effect modelling for improved estimation
- of water retention and infiltration parameters}
-    \bold{ Journal of Hydrology, 330, 748-758}
+Omuto CT. 2006. Large-area soil physical degradation assessment using gis, remote sensing, and infrared spectroscopy in arid and semi-arid Kenya.PhD Dissertation, University of Nairobi, Kenya
 }
 \examples{
-data(Infilt)
-summary(Infilt) 
+data(infilt)
+str(infilt) 
 }
 \keyword{datasets}
