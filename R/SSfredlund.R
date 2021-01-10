@@ -1,5 +1,5 @@
 SSfredlund <-
-structure(function (x, thr, ths, alp, nscal, mscal) 
+structure(function (x, thr, ths, alp, nscal, mscal)
 {
     .expr1 <- ths - thr
     .expr2 <- x/alp
@@ -11,18 +11,17 @@ structure(function (x, thr, ths, alp, nscal, mscal)
     .expr12 <- .expr5^(mscal - 1)
     .expr23 <- .expr6^2
     .value <- thr + .expr1/.expr6
-    .grad <- array(0, c(length(.value), 5L), list(NULL, c("thr", 
-        "ths", "alp", "nscal", "mscal")))
+    .grad <- array(0, c(length(.value), 5L), list(NULL, c("thr","ths", "alp", "nscal", "mscal")))
     .grad[, "thr"] <- 1 - .expr9
     .grad[, "ths"] <- .expr9
-    .grad[, "alp"] <- .expr1 * (.expr12 * (mscal * (.expr2^(nscal - 
+    .grad[, "alp"] <- .expr1 * (.expr12 * (mscal * (.expr2^(nscal -
         1) * (nscal * (x/alp^2))/.expr4)))/.expr23
-    .grad[, "nscal"] <- -(.expr1 * (.expr12 * (mscal * (.expr3 * 
+    .grad[, "nscal"] <- -(.expr1 * (.expr12 * (mscal * (.expr3 *
         log(.expr2)/.expr4)))/.expr23)
     .grad[, "mscal"] <- -(.expr1 * (.expr6 * log(.expr5))/.expr23)
     attr(.value, "gradient") <- .grad
     .value
-}, initial = function (mCall, data, LHS)
+}, initial = function (mCall, data, LHS, ...)
 {
     xy <- sortedXyData(mCall[["x"]], LHS, data)
     if(nrow(xy) < 4) {

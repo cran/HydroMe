@@ -1,8 +1,6 @@
 \name{SSomuto}
 \alias{SSomuto}
-\title{
-An Omuto water retention model 
-}
+\title{'Omuto' Water Retention Model}
 \description{
 This is a four- parameter function to determine water retention hydraulic parameters contained in a bimodal pore-size distribution developed by Omuto. The parameters are for the first and second compartments
 }
@@ -47,9 +45,10 @@ SSvgm, SSgard, SSfredlund
 }
 \examples{
 data(isric)
-isric1=isric[1:32,]
-omuto=nlsList(y~SSomuto(x,ths1,alp1,ths2,alp2)|Sample, isric1)
-omuto.nlme=nlme(omuto)## for fitting mixed-effects models
+isric1 <- isric[1:32,]
+require("nlme")
+omuto <- nlsList(y ~ SSomuto(x,ths1,alp1,ths2,alp2) | Sample,  isric1)
+omuto.nlme <- nlme(omuto)## for fitting mixed-effects models
 summary(omuto.nlme)
 }
 \keyword{ models }

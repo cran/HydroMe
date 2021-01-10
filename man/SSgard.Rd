@@ -1,10 +1,8 @@
 \name{SSgard}
 \alias{SSgard}
-\title{
-A Gardner  water retention model for grouped data
-}
+\title{'Gardner' Water Retention Model for Grouped Data}
 \description{
-This is a four- parameter function to determine water retention hydraulic parameters contained in the Gardner water retention model
+This is a four-parameter function to determine water retention hydraulic parameters contained in the Gardner water retention model
 }
 \usage{
 SSgard(input, Thr, Ths, alp, scal)
@@ -23,7 +21,7 @@ This is the saturated moisture content. It's the moisture content when suction p
 It's the inverse of air-entry potential or bubbling pressure
 }
   \item{scal}{
-This is a parameter or index for the pore-size distribution 
+This is a parameter or index for the pore-size distribution
 }
 }
 \details{
@@ -44,8 +42,12 @@ SSvgm, SSomuto, Campbel
 }
 \examples{
 data(isric)
-isric1=isric[1:32,]
-gard=nlsList(y~SSgard(x,thr,ths,alp,scal)|Sample, isric1)
+isric1 <- isric[1:32,]
+require("nlme")
+require("minpack.lm")
+gardner <- nlsLM(y ~ SSgard(x,thr,ths,alp,nscal), isric1)
+gardner
+gard <- nlsList(y ~ SSgard(x,thr,ths,alp,scal) | Sample, isric1)
 coef(gard)
 }
 \keyword{ models }

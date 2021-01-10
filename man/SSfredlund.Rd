@@ -23,10 +23,10 @@ This is the saturated moisture content. It's the moisture content when suction p
 It's the inverse of air-entry potential or bubbling pressure
 }
   \item{nscal}{
-This is a parameter or index for the pore-size distribution 
+This is a parameter or index for the pore-size distribution
 }
   \item{mscal}{
-This is a scaling parameter which is also related to the index for the pore-size distribution 
+This is a scaling parameter which is also related to the index for the pore-size distribution
 }
 }
 \details{
@@ -46,12 +46,14 @@ Christian Thine Omuto
 SSomuto, SSvgm, SSkosugi
 }
 \examples{
-##Attach sample data (isric data) from the package
+## Attach sample data (isric data) from the package
 data(isric)
-pf= subset(isric, Sample=="Benin2")
-fredlund.ns=nlsLM(y~SSfredlund(x,thr,ths,alp,nscal,mscal),data=pf,control=nls.lm.control(maxiter=200,options(warn=-1)))
+pf <- subset(isric, Sample=="Benin2")
+require("minpack.lm")
+fredlund.ns <- nlsLM(y ~ SSfredlund(x,thr,ths,alp,nscal,mscal), data=pf,
+                     control = nls.lm.control(maxiter=200,options(warn=-1)))
 coef(fredlund.ns)
+plot(fitted(fredlund.ns)~pf$y)
 }
 \keyword{ models }
-
 \keyword{ manip }

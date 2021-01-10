@@ -20,7 +20,7 @@ This is the saturated moisture content. It's the moisture content when suction p
 It's the inverse of air-entry potential or bubbling pressure
 }
   \item{nscal}{
-This is a parameter or index for the pore-size distribution 
+This is a parameter or index for the pore-size distribution. nscal=1/b, where b is empirical parameter in the original Campbel model
 }
 }
 \details{
@@ -34,7 +34,7 @@ Campbell GS. 1974. A simple method for determining unsaturated conductivity from
 moisture retention data. Soil Science 117: 311-314
 }
 \author{
-Omuto CT
+Christian Thine Omuto
 }
 \note{
 Warnings: Choice of starting values for Campbel function parameter estimation needs a careful thought. Sometimes it may be necessary to use alp=1/Dstart(data)[3] or Dstart(data)[3] and nscal=Dstart(data)[4]-1 or nscal=Dstart(data)[4]. One has to try the starting variables that will work for the given data
@@ -42,6 +42,16 @@ Warnings: Choice of starting values for Campbel function parameter estimation ne
 \seealso{
 Brook, SSvgm, SSfredlund
 }
-
+\examples{
+data(isric)
+pf <- subset(isric, Sample=="Nicaragua38")
+require("minpack.lm")
+campbel.ns <- nlsLM(y ~ Campbel(x,ths,alp,nscal), data=pf,
+                  control = nls.lm.control(maxiter=200),
+                  start = c(ths = Dstart(pf)[2],
+                            alp=Dstart(pf)[3], nscal=-1*(Dstart(pf)[4]-1)))
+plot(fitted(campbel.ns),pf$y)
+coef(campbel.ns)
+}
 \keyword{ models }
 \keyword{ manip }

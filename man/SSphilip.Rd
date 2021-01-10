@@ -37,7 +37,8 @@ SShorton, SSgampt
 }
 \examples{
 data(infilt)
-philip.nis=nlsList(log(Rate)~SSphilip(Time,fc,S)|PlotNo, data=infilt)
+require("nlme")
+philip.nis <- nlsList(log(Rate) ~ SSphilip(Time,fc,S) | PlotNo, data=infilt)
 coef(philip.nis)
 }
 

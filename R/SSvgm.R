@@ -1,30 +1,29 @@
 SSvgm <-
-structure(function (x, thr, ths, alp, nscal, mscal) 
-{
+  structure(function (input, thr, ths, alp, nscal, mscal)
+  {
     .expr1 <- ths - thr
-    .expr2 <- alp * x
-    .expr3 <- .expr2^nscal
+    .expr2 <- alp * input
+    .expr3 <- .expr2^(nscal)
     .expr4 <- 1 + .expr3
-    .expr5 <- .expr4^mscal
-    .expr8 <- 1/.expr5
-    .expr11 <- .expr4^(mscal - 1)
-    .expr19 <- .expr5^2
-    .value <- thr + .expr1/.expr5
-    .grad <- array(0, c(length(.value), 5L), list(NULL, c("thr", 
-        "ths", "alp", "nscal", "mscal")))
-    .grad[, "thr"] <- 1 - .expr8
-    .grad[, "ths"] <- .expr8
-    .grad[, "alp"] <- -(.expr1 * (.expr11 * (mscal * (.expr2^(nscal - 
-        1) * (nscal * x))))/.expr19)
-    .grad[, "nscal"] <- -(.expr1 * (.expr11 * (mscal * (.expr3 * 
-        log(.expr2))))/.expr19)
-    .grad[, "mscal"] <- -(.expr1 * (.expr5 * log(.expr4))/.expr19)
+    .expr5 <- -mscal
+    .expr6 <- .expr4^.expr5
+    .expr11 <- .expr4^(.expr5 - 1)
+    .value <- thr + .expr1 * .expr6
+    .grad <- array(0, c(length(.value), 5L), list(NULL, c("thr",
+                                                          "ths", "alp", "nscal", "mscal")))
+    .grad[, "thr"] <- 1 - .expr6
+    .grad[, "ths"] <- .expr6
+    .grad[, "alp"] <- .expr1 * (.expr11 * (.expr5 * (.expr2^((nscal) -
+                                                               1) * ((nscal) * input))))
+    .grad[, "nscal"] <- .expr1 * (.expr11 * (.expr5 * (.expr3 *
+                                                         log(.expr2))))
+    .grad[, "mscal"] <- -(.expr1 * (.expr6 * log(.expr4)))
     attr(.value, "gradient") <- .grad
     .value
-}, initial = function (mCall, data, LHS)
-{
-    xy <- sortedXyData(mCall[["x"]], LHS, data)
-    if(nrow(xy) < 4) {
+  }, initial = function (mCall, data, LHS, ...)
+  {
+    xy <- sortedXyData(mCall[["input"]], LHS, data)
+    if(nrow(xy) < 5) {
       stop("Too few distinct x values to fit a van Genutchen model")
     }
     ndistinct <- nrow(xy)
@@ -44,4 +43,4 @@ structure(function (x, thr, ths, alp, nscal, mscal)
     pars <- as.numeric(c(thr = Thr1, ths = Ths1, alp = 1/alp1, nscal = scal1,mscal=m1))
     setNames(c(pars[1], pars[2], pars[3], pars[4], pars[5]), mCall[c("thr","ths","alp","nscal","mscal")])
 
-}, pnames = c("thr", "ths", "alp", "nscal", "mscal"), class = "selfStart")
+  }, pnames = c("thr", "ths", "alp", "nscal", "mscal"), class = "selfStart")

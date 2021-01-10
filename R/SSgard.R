@@ -21,7 +21,7 @@ structure(function (input, Thr, Ths, alp, scal)
         attr(.value, "gradient") <- .grad
     }
     .value
-}, initial = function (mCall, data, LHS) 
+}, initial = function (mCall, data, LHS, ...) 
 {
     xy <- data.frame(sortedXyData(mCall[["input"]], LHS, data))
     if (nrow(xy) < 5) {

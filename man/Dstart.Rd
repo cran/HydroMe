@@ -2,10 +2,10 @@
 \alias{Dstart}
 
 \title{
-A function for detremining starting values for nonlinear parameter estimation in the water retention models 
+Determine starting values for nonlinear parameter estimation in the water retention models
 }
 \description{
-This function determines the starting values for estimation of parameters in the water retention models. The input data must contain at least the x (suction potential) and y(moisture contents) variables. It gives the starting values as close to the expected estimates as possible. 
+This function determines the starting values for estimation of parameters in the water retention models. The input data must contain at least the x (suction potential) and y(moisture contents) variables. It gives the starting values as close to the expected estimates as possible.
 }
 \usage{
 Dstart(data)

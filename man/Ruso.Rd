@@ -23,7 +23,7 @@ This is the saturated moisture content. It's the moisture content when suction p
 It's the inverse of air-entry potential or bubbling pressure
 }
   \item{nscal}{
-This is a parameter or index for the pore-size distribution 
+This is a parameter or index for the pore-size distribution
 }
 }
 \details{
@@ -33,7 +33,7 @@ A Russo model is a type of nonlinear curve fitting model for fitting water reten
 A list of objects returned by standard R regression functions such as nls and lm
 }
 \references{
-Russo D. 1988. Determining soil hydraulic properties by parameter estimation: on the selection of a model for the hydraulic properties. Water Resources Research 24(3): 453-459 
+Russo D. 1988. Determining soil hydraulic properties by parameter estimation: on the selection of a model for the hydraulic properties. Water Resources Research 24(3): 453-459
 }
 \author{
 Christian Thine Omuto
@@ -43,10 +43,14 @@ Christian Thine Omuto
 Campbel, Brook, Tani
 }
 \examples{
-##Attach sample data (isric data) from the package
+## Attach sample data (isric data) from the package
 data(isric)
-pf=subset(isric, Sample=="Benin2")
-ruso.ns=nlsLM(y~Ruso(x,thr,ths,alp,nscal),data=pf, control=nls.lm.control(maxiter=200),start=c(thr=Dstart(pf)[1],ths=Dstart(pf)[2], alp=Dstart(pf)[3], nscal=Dstart(pf)[4]))
+pf <- subset(isric, Sample=="Italy5")
+require("minpack.lm")
+ruso.ns <- nlsLM(y ~ Ruso(x,thr,ths,alp,nscal), data=pf,
+                 control = nls.lm.control(maxiter=200),
+                 start = c(thr= Dstart(pf)[1], ths = Dstart(pf)[2],
+                           alp= Dstart(pf)[3], nscal=Dstart(pf)[4]))
 coef(ruso.ns)
 }
 \keyword{ models }

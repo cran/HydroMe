@@ -1,7 +1,7 @@
 \name{Tani}
 \alias{Tani}
 \title{
-A Tani water retention model 
+A Tani water retention model
 }
 \description{
 This is a three- parameter function to determine water retention hydraulic parameters contained in the Tani water retention model
@@ -24,7 +24,7 @@ It's the inverse of air-entry potential or bubbling pressure
 }
 }
 \details{
-Tani model is a type of nonlinear curve fitting model for fitting water retention characteristics using experimental data. It requires initial parameter estimates for the model to work. This can be done using Dstart function (e.g. thr=Dstart(data)[1]). If warnings are given during the estimation process, try to increase the iteration limit using control function. Sometimes the warnings can be suppressed using (warn=-1)/ignored since they do not terminate the process 
+Tani model is a type of nonlinear curve fitting model for fitting water retention characteristics using experimental data. It requires initial parameter estimates for the model to work. This can be done using Dstart function (e.g. thr=Dstart(data)[1]). If warnings are given during the estimation process, try to increase the iteration limit using control function. Sometimes the warnings can be suppressed using (warn=-1)/ignored since they do not terminate the process
 }
 \value{
 A list of objects returned by standard R regression functions such as nls and lm
@@ -41,10 +41,12 @@ Campbel, Brook, Ruso
 }
 \examples{
 data(isric)
-pf=subset(isric, Sample=="Benin2")
-tani.ns=nlsLM(y~Tani(x,thr,ths,alp),data=pf, control=nls.lm.control(maxiter=200),start=c(thr=Dstart(pf)[1],ths=Dstart(pf)[2], alp=Dstart(pf)[3]))
+pf <- subset(isric, Sample=="Italy4")
+require("minpack.lm")
+tani.ns <- nlsLM(y ~ Tani(x,thr,ths,alp), data = pf,
+                 control = nls.lm.control(maxiter=200),
+                 start = c(thr=Dstart(pf)[1],ths=Dstart(pf)[2], alp=Dstart(pf)[3]))
 coef(tani.ns)
-
 }
 \keyword{ models }
 \keyword{ manip }

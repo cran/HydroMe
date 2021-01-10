@@ -24,7 +24,7 @@ This is the saturated moisture content. It's the moisture content when suction p
 It's the inverse of air-entry potential or bubbling pressure
 }
   \item{nscal}{
-This is a parameter or index for the pore-size distribution  
+This is a parameter or index for the pore-size distribution
 }
 }
 \details{
@@ -45,10 +45,14 @@ Christian Thine Omuto
 SSvgm, SSgard, Campbel
 }
 \examples{
-##Attach sample data (isric data) from the package
+## Attach sample data (isric data) from the package
 data(isric)
-pf= subset(isric, Sample=="Benin2")
-brook.ns=nlsLM(y~Brook(x,thr,ths,alp,nscal),data=pf, control=nls.lm.control(maxiter=200),start=c(thr=Dstart(pf)[1],ths=Dstart(pf)[2], alp=Dstart(pf)[3], nscal=Dstart(pf)[4]-1))
+pf <- subset(isric, Sample=="Benin2")
+require("minpack.lm")
+brook.ns <- nlsLM(y ~ Brook(x,thr,ths,alp,nscal), data=pf,
+                  control = nls.lm.control(maxiter=200),
+                  start = c(thr= Dstart(pf)[1], ths = Dstart(pf)[2],
+                            alp= Dstart(pf)[3], nscal=Dstart(pf)[4]-1))
 summary(brook.ns)## To produce a summary of modelling results
 }
 \keyword{ Models }

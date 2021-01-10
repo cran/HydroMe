@@ -37,11 +37,11 @@ Christian Thine Omuto
 SSphilip, SShorton
 }
 \examples{
-##Load the data
+## Load the data
 data(infilt)
-gamp.ns=nlsLM(Cumrate~SSgampt(Rate,ks,A), infilt)
+require("minpack.lm")
+gamp.ns <- nlsLM(Cumrate ~ SSgampt(Rate,ks,A), infilt)
 summary(gamp.ns)
 }
 \keyword{ models }
-
 \keyword{ manip }

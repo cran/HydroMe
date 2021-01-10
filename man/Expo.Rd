@@ -30,7 +30,7 @@ An exponential model is a type of nonlinear curve fitting model for fitting wate
 A list of objects returned by standard R regression functions such as nls and lm
 }
 \references{
-Omuto CT. 2009. Biexponential model for water retention characteristics. Geoderma 149:235-242 
+Omuto CT. 2009. Biexponential model for water retention characteristics. Geoderma 149:235-242
 }
 \author{
 Christian Thine Omuto
@@ -41,9 +41,12 @@ SSomuto, SSfredlund
 \examples{
 ##Attach sample data (isric data) from the package
 data(isric)
-pf= subset(isric, Sample=="Benin2")
-expo.ns=nlsLM(y~Expo(x,thr,ths,alp),data=pf, control=nls.lm.control(maxiter=200),start=c(thr=Dstart(pf)[1],ths=Dstart(pf)[2], alp=Dstart(pf)[3]))
-expo.ns
+pf <- subset(isric, Sample=="Benin2")
+require("minpack.lm")
+expo.ns <- nlsLM(y ~ Expo(x,thr,ths,alp), data=pf,
+                 control = nls.lm.control(maxiter=200),
+                 start = c(thr=Dstart(pf)[1],ths=Dstart(pf)[2], alp=Dstart(pf)[3]))
+cor(fitted(expo.ns),pf$y)^2
 }
 
 \keyword{ models }

@@ -31,12 +31,13 @@ Omuto CT and Gumbe LO. 2009. Estimating water infiltration and retention charact
 \keyword{ package }
 \examples{
 data(infilt)
-gamp.ns=nlsLM(Rate~SSgampt(Time,ks,A), infilt)
+require("minpack.lm")
+gamp.ns <- nlsLM(Rate ~ SSgampt(Time,ks,A), infilt)
 summary(gamp.ns)
 data(isric)
-isric1=isric[1:32,]
-omuto=nlsList(y~SSomuto(x,ths1,alp1,ths2,alp2)|Sample, isric1)
-omuto.nlme=nlme(omuto)## for fitting mixed-effects models
+isric1 <- isric[1:32,]
+require("nlme")
+omuto <- nlsList(y~SSomuto(x,ths1,alp1,ths2,alp2)|Sample, isric1)
+omuto.nlme <- nlme(omuto)## for fitting mixed-effects models
 summary(omuto.nlme)
-
 }

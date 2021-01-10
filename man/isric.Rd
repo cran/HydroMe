@@ -1,11 +1,9 @@
 \name{isric}
 \alias{isric}
 \docType{data}
-\title{
-Water retention world dataset from ISRIC
-}
+\title{Water Retention World Dataset from ISRIC}
 \description{
-This is part of world dataset of measured water retention characteristics. It contains soil moisture contents (y) at eight (8) levels of suction pressure heads (x).  
+This is part of world dataset of measured water retention characteristics. It contains soil moisture contents (y) at eight (8) levels of suction pressure heads (x).
 }
 \usage{data(isric)}
 \format{
@@ -20,16 +18,16 @@ This is part of world dataset of measured water retention characteristics. It co
   }
 }
 \details{
-The data is grouped according to samples from each country from where the data were collected. In addition, it also contains surface bulk density (BD) for each sample. The whole dataset can be obtained from www.isric.nl
+The data is grouped according to samples from each country from where the data were collected. In addition, it also contains surface bulk density (BD) for each sample. The whole dataset can be obtained from www.isric.org
 }
 \source{
-www.isric.nl
+  \url{https://www.isric.org/}
 }
-\references{
-www.isric.nl
-}
+%% \references{
+%% www.isric.org
+%% }
 \examples{
 data(isric)
-str(isric) 
+str(isric)
 }
 \keyword{datasets}
