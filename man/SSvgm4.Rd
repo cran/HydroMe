@@ -40,16 +40,17 @@ Christian Thine Omuto
 }
 
 \seealso{
-SSomuto, Brook, Campbel
+\code{\link{SSomuto}}, \code{\link{Brook}}, \code{\link{Campbel}}
 }
 \examples{
 data(isric)
-require("nlme")
-require("minpack.lm")
+library(nlme)
+library(minpack.lm)
 pfdata=subset(isric,Country=="Benin")
+suppressWarnings(
 vn4.ns <- nlsList(y ~ SSvgm4(x,thr,ths,alp,nscal)|Sample,
                data = pfdata,
-               control = nls.lm.control(maxiter=200,options(warn=-1)))
+               control = nls.lm.control(maxiter=200)))
 coef(vn4.ns)
 plot(fitted(vn4.ns)~pfdata$y)
 cor(fitted(vn4.ns),pfdata$y)^2

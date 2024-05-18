@@ -33,11 +33,11 @@ Philip JR. 1957. The theory of infiltration.: 4 Sorptivity and algebraic infiltr
 Christian Thine Omuto
 }
 \seealso{
-SShorton, SSgampt
+\code{\link{SShorton}}, \code{\link{SSgampt}}
 }
 \examples{
 data(infilt)
-require("nlme")
+library(nlme)
 philip.nis <- nlsList(log(Rate) ~ SSphilip(Time,fc,S) | PlotNo, data=infilt)
 coef(philip.nis)
 }

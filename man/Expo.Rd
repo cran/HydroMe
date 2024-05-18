@@ -36,13 +36,13 @@ Omuto CT. 2009. Biexponential model for water retention characteristics. Geoderm
 Christian Thine Omuto
 }
 \seealso{
-SSomuto, SSfredlund
+\code{\link{SSomuto}}, \code{\link{SSfredlund}},\code{\link{SSgard}}
 }
 \examples{
 ##Attach sample data (isric data) from the package
 data(isric)
 pf <- subset(isric, Sample=="Benin2")
-require("minpack.lm")
+library(minpack.lm)
 expo.ns <- nlsLM(y ~ Expo(x,thr,ths,alp), data=pf,
                  control = nls.lm.control(maxiter=200),
                  start = c(thr=Dstart(pf)[1],ths=Dstart(pf)[2], alp=Dstart(pf)[3]))

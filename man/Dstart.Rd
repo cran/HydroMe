@@ -33,7 +33,7 @@ Christian Thine Omuto
 }
 
 \seealso{
-SSvgm, Sskosugi, SSgard
+\code{\link{SSkosugi}}, \code{\link{SSvgm}},\code{\link{SSgard}}
 }
 \examples{
 data(isric)

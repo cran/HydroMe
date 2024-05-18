@@ -11,17 +11,17 @@ SSgampt(input, ks, A)
 }
 \arguments{
   \item{input}{
-Instantaneous infiltration rate 
+Instantaneous infiltration rate
 }
   \item{ks}{
 Saturated hydraulic conductivity
 }
   \item{A}{
-Constant incorporating matric suction potential, wetting front, and antecedent moisture content 
+Constant incorporating matric suction potential, wetting front, and antecedent moisture content
 }
 }
 \details{
-This is a self-starting model for estimating Green-Ampt infiltration model using instantaneous and cumulative infiltration data 
+This is a self-starting model for estimating Green-Ampt infiltration model using instantaneous and cumulative infiltration data
 }
 \value{
 A list of objects returned by standard R regression functions such as nls and lm
@@ -34,12 +34,12 @@ Christian Thine Omuto
 }
 
 \seealso{
-SSphilip, SShorton
+\code{\link{SSphilip}}, \code{\link{SShorton}}
 }
 \examples{
 ## Load the data
 data(infilt)
-require("minpack.lm")
+library(minpack.lm)
 gamp.ns <- nlsLM(Cumrate ~ SSgampt(Rate,ks,A), infilt)
 summary(gamp.ns)
 }

@@ -2,19 +2,19 @@ Package: HydroMe
 Type: Package
 Title: Estimating Water Retention and Infiltration Model Parameters
         using Experimental Data
-Version: 2.0-1
-Date: 2021-01-07
+Version: 2.1.1
+Description: Contains functions for estimating the parameters of infiltration and water retention models using the curve-fitting methods as discussed in Omuto and Gumbe (2009) ("Estimating water infiltration and retention characteristics using a computer program in R"<doi:10.1016/j.cageo.2008.08.011>). The models considered are those that are commonly used in soil science. Version 2 of the package has new models for water retention characteristic curves.
+License: GPL (>= 3.5.0)
+Encoding: UTF-8
+LazyData: true
 Imports: stats
 Suggests: minpack.lm, nlme
-Author: Christian Thine Omuto [aut, cre], Martin Maechler [ctb], Vitalis Too [ctb]
-Maintainer: Christian Thine Omuto <thineomuto@yahoo.com>
-Description: This version 2 of the HydroMe v.1 package estimates the parameters
-  in infiltration and water retention models by curve-fitting methods <doi:10.1016/j.cageo.2008.08.011>. The
-  models considered are those commonly used in soil science.  It has new models
-  for water retention and characteristic curves.
-License: GPL (>= 2)
-URL: https://CRAN.r-project.org/package=HydroMe
+Authors@R: person("Christian Thine", "Omuto",, "thineomuto@yahoo.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5792-3485"))
 NeedsCompilation: no
-Packaged: 2021-01-08 07:54:40 UTC; Cthin
+Packaged: 2024-05-17 18:08:38 UTC; Cthine
+Author: Christian Thine Omuto [aut, cre]
+    (<https://orcid.org/0000-0002-5792-3485>)
+Maintainer: Christian Thine Omuto <thineomuto@yahoo.com>
 Repository: CRAN
-Date/Publication: 2021-01-10 15:40:18 UTC
+Date/Publication: 2024-05-18 00:10:02 UTC

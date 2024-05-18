@@ -23,9 +23,6 @@ The data is grouped according to samples from each country from where the data w
 \source{
   \url{https://www.isric.org/}
 }
-%% \references{
-%% www.isric.org
-%% }
 \examples{
 data(isric)
 str(isric)

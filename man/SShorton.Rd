@@ -24,7 +24,7 @@ Shape factor related to soil pore continuity
 }
 }
 \details{
-This is a self-starting model for estimating parameters in the Horton infiltration model using instantaneous infiltration rates (here known as Rate) and time data (Time) 
+This is a self-starting model for estimating parameters in the Horton infiltration model using instantaneous infiltration rates (here known as Rate) and time data (Time)
 }
 \value{
 A list of objects returned by standard R regression functions such as nls and lm
@@ -37,12 +37,12 @@ Christian Thine Omuto
 }
 
 \seealso{
-SSphilip, SSgampt
+\code{\link{SSphilip}}, \code{\link{SSgampt}}
 }
 \examples{
 data(infilt)
 infil <- infilt[319:751,]
-require("nlme")
+library(nlme)
 hort.lis <- nlsList(log(Rate) ~ SShorton(Time,fc,f0,lrk) | PlotNo,
                     infil) # Rate is the y variable
 hort.lis

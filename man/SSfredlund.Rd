@@ -43,15 +43,16 @@ Christian Thine Omuto
 }
 
 \seealso{
-SSomuto, SSvgm, SSkosugi
+\code{\link{SSomuto}}, \code{\link{SSvgm}}, \code{\link{SSkosugi}}
 }
 \examples{
 ## Attach sample data (isric data) from the package
 data(isric)
 pf <- subset(isric, Sample=="Benin2")
-require("minpack.lm")
+library(minpack.lm)
+suppressWarnings(
 fredlund.ns <- nlsLM(y ~ SSfredlund(x,thr,ths,alp,nscal,mscal), data=pf,
-                     control = nls.lm.control(maxiter=200,options(warn=-1)))
+                     control = nls.lm.control(maxiter=200)))
 coef(fredlund.ns)
 plot(fitted(fredlund.ns)~pf$y)
 }

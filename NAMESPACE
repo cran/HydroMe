@@ -1,11 +1,2 @@
-importFrom("stats", coef, lm, dnorm, pnorm)
-
-export(Brook,
-       Campbel,
-       Dstart,
-       Expo,
-       MB,
-       Ruso,
-       SSfredlund, SSgampt, SSgard,
-       SShorton, SSkosugi, SSomuto, SSphilip, SSvgm,SSvgm4,
-       Tani)
+exportPattern("^[[:alpha:]]+")
+importFrom("stats", "coef", "dnorm", "lm", "pnorm")

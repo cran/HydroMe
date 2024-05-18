@@ -37,12 +37,12 @@ Christian Thine Omuto
 }
 
 \seealso{
-Campbel, Brook, Ruso
+\code{\link{Brook}}, \code{\link{Ruso}}, \code{\link{Campbel}}
 }
 \examples{
 data(isric)
 pf <- subset(isric, Sample=="Italy4")
-require("minpack.lm")
+library(minpack.lm)
 tani.ns <- nlsLM(y ~ Tani(x,thr,ths,alp), data = pf,
                  control = nls.lm.control(maxiter=200),
                  start = c(thr=Dstart(pf)[1],ths=Dstart(pf)[2], alp=Dstart(pf)[3]))

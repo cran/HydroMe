@@ -1,7 +1,7 @@
 \name{SSkosugi}
 \alias{SSkosugi}
 \title{
-A Kosugi water retention model 
+A Kosugi water retention model
 }
 \description{
 This is a four- parameter function to determine water retention hydraulic parameters contained in the Kosugi water retention model
@@ -23,7 +23,7 @@ This is the saturated moisture content. It's the moisture content when suction p
 It's the inverse of air-entry potential or bubbling pressure
 }
   \item{nscal}{
-This is a parameter or index for the pore-size distribution 
+This is a parameter or index for the pore-size distribution
 }
 }
 \details{
@@ -39,14 +39,15 @@ Kosugi, K. 1996. Lognormal distribution model for unsaturated soil hydraulic pro
 Christian Thine Omuto
 }
 \seealso{
-SSomuto, SSvgm, SSgard
+\code{\link{SSomuto}}, \code{\link{SSvgm}}, \code{\link{SSgard}}
 }
 \examples{
 data(isric)
-require("minpack.lm")
+library(minpack.lm)
+suppressWarnings(
 kosugi.ns <- nlsLM(y ~ SSkosugi(x,thr,ths,alp,nscal),
                    data = subset(isric, Sample=="Benin2"),
-                   control = nls.lm.control(maxiter=200,options(warn=-1)))
+                   control = nls.lm.control(maxiter=200)))
 summary(kosugi.ns)
 }
 \keyword{ models }

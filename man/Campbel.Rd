@@ -40,12 +40,12 @@ Christian Thine Omuto
 Warnings: Choice of starting values for Campbel function parameter estimation needs a careful thought. Sometimes it may be necessary to use alp=1/Dstart(data)[3] or Dstart(data)[3] and nscal=Dstart(data)[4]-1 or nscal=Dstart(data)[4]. One has to try the starting variables that will work for the given data
 }
 \seealso{
-Brook, SSvgm, SSfredlund
+\code{\link{Brook}}, \code{\link{SSvgm}}, \code{\link{SSfredlund}}
 }
 \examples{
 data(isric)
 pf <- subset(isric, Sample=="Nicaragua38")
-require("minpack.lm")
+library(minpack.lm)
 campbel.ns <- nlsLM(y ~ Campbel(x,ths,alp,nscal), data=pf,
                   control = nls.lm.control(maxiter=200),
                   start = c(ths = Dstart(pf)[2],

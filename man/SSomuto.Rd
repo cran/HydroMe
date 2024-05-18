@@ -41,12 +41,12 @@ This function can also be used to fit water retention characteristics for a grou
 }
 
 \seealso{
-SSvgm, SSgard, SSfredlund
+\code{\link{SSvgm}}, \code{\link{SSgard}}
 }
 \examples{
 data(isric)
 isric1 <- isric[1:32,]
-require("nlme")
+library(nlme)
 omuto <- nlsList(y ~ SSomuto(x,ths1,alp1,ths2,alp2) | Sample,  isric1)
 omuto.nlme <- nlme(omuto)## for fitting mixed-effects models
 summary(omuto.nlme)

@@ -42,13 +42,13 @@ Christian Thine Omuto
 }
 
 \seealso{
-SSvgm, SSgard, Campbel
+\code{\link{SSvgm}}, \code{\link{SSgard}}, \code{\link{Campbel}}
 }
 \examples{
 ## Attach sample data (isric data) from the package
 data(isric)
 pf <- subset(isric, Sample=="Benin2")
-require("minpack.lm")
+library(minpack.lm)
 brook.ns <- nlsLM(y ~ Brook(x,thr,ths,alp,nscal), data=pf,
                   control = nls.lm.control(maxiter=200),
                   start = c(thr= Dstart(pf)[1], ths = Dstart(pf)[2],

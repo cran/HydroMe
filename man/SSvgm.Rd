@@ -43,15 +43,16 @@ Christian Thine Omuto
 }
 
 \seealso{
-SSomuto, Brook, Campbel
+\code{\link{SSomuto}}, \code{\link{Brook}}, \code{\link{Campbel}}
 }
 \examples{
 data(isric)
-require("minpack.lm")
+library(minpack.lm)
 pf1=subset(isric,Sample=="Nicaragua21")
+suppressWarnings(
 vn.ns <- nlsLM(y ~ SSvgm(x,thr,ths,alp,nscal,mscal),
                data = pf1,
-               control = nls.lm.control(maxiter=200,options(warn=-1)))
+               control = nls.lm.control(maxiter=200)))
 coef(vn.ns)
 plot(fitted(vn.ns)~pf1$y)
 abline(a=0,b=1,lty=20, col="blue")

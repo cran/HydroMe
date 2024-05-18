@@ -38,13 +38,13 @@ Christian Thine Omuto
 }
 
 \seealso{
-SSvgm, SSomuto, Campbel
+\code{\link{SSomuto}}, \code{\link{SSvgm}}, \code{\link{Campbel}}
 }
 \examples{
 data(isric)
 isric1 <- isric[1:32,]
-require("nlme")
-require("minpack.lm")
+library(nlme)
+library(minpack.lm)
 gardner <- nlsLM(y ~ SSgard(x,thr,ths,alp,nscal), isric1)
 gardner
 gard <- nlsList(y ~ SSgard(x,thr,ths,alp,scal) | Sample, isric1)

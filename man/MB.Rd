@@ -39,12 +39,12 @@ Christian Thine Omuto
 Warnings: Choice of starting values for SSMB function parameter estimation needs a careful thought. Sometimes it may be necessary to use alp=1/Dstart(data)[3] or Dstart(data)[3]. One has to try the starting variables that will work for the given data.
 }
 \seealso{
-SSomuto, Expo, Campbel
+\code{\link{SSomuto}}, \code{\link{Expo}}, \code{\link{Campbel}}
 }
 \examples{
 ##Attach sample data (isric data) from the package
 data(isric)
-require("minpack.lm")
+library(minpack.lm)
 pf <- subset(isric, Sample=="Italy5")
 mb.ns=nlsLM(y~MB(x,thr,ths,alp),data=pf, control=nls.lm.control(maxiter=200),
             start=c(thr=Dstart(pf)[1],ths=Dstart(pf)[2], alp=Dstart(pf)[3]))
